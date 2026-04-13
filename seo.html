@@ -1,0 +1,652 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SEO & Performance Audit Report</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f8f9f5; /* Warm, soft background matching the screenshots */
+            color: #333;
+        }
+        .font-serif-custom {
+            font-family: 'Playfair Display', serif;
+        }
+        .card-bg {
+            background-color: #f1f2ec;
+            border-radius: 8px;
+        }
+        .progress-bar-bg {
+            background-color: #e5e7eb;
+        }
+        .text-critical { color: #d9534f; }
+        .text-warning { color: #f0ad4e; }
+        .text-good { color: #5cb85c; }
+        
+        /* Custom Scrollbar for a cleaner look */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #f1f2ec; 
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #d1d5db; 
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #9ca3af; 
+        }
+    </style>
+</head>
+<body class="p-4 md:p-10 text-gray-800">
+
+    <div class="max-w-6xl mx-auto">
+        
+        <!-- Header -->
+        <header class="text-center mb-20 border-b border-gray-300 pb-12">
+            <p class="text-xs text-gray-500 tracking-[0.2em] uppercase mb-6">SEO Audit Report</p>
+            <h1 class="font-serif-custom text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold mb-6 text-gray-800 tracking-tight break-words">altogeneration<span class="text-blue-600 italic font-medium">.com</span></h1>
+            <div class="flex flex-wrap justify-center gap-6 text-sm text-gray-500 font-light uppercase tracking-wider">
+                <span>• March 2026</span>
+                <span>• E-commerce Audit</span>
+                <span>• Form Factor: Mobile</span>
+            </div>
+        </header>
+
+        <!-- Section 1: Overall Health -->
+        <section class="mb-24">
+            <h2 class="text-xs text-gray-500 tracking-[0.2em] mb-3 uppercase">01 - Overall Health</h2>
+            <h3 class="font-serif-custom text-4xl mb-12 text-gray-800">SEO Health Score</h3>
+
+            <div class="flex flex-col md:flex-row items-center justify-between gap-12">
+                <!-- Main Circular Chart -->
+                <div class="w-full md:w-1/3 relative flex justify-center items-center">
+                    <div class="w-72 h-72 relative">
+                        <canvas id="mainHealthChart"></canvas>
+                        <!-- Center Text -->
+                        <div class="absolute inset-0 flex flex-col items-center justify-center font-serif-custom">
+                            <span class="text-6xl text-gray-800">51</span>
+                            <span class="text-sm text-gray-400 border-t border-gray-300 pt-2 mt-2">/ 100</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Breakdown Bars -->
+                <div class="w-full md:w-2/3 flex flex-col gap-6 text-sm">
+                    <div class="flex items-center gap-6">
+                        <span class="w-40 text-right text-gray-600 font-medium">Technical SEO</span>
+                        <div class="flex-1 h-1.5 progress-bar-bg relative rounded-full overflow-hidden">
+                            <div class="absolute top-0 left-0 h-full bg-yellow-600 rounded-full" style="width: 80%"></div>
+                        </div>
+                    </div>
+                    <div class="flex items-center gap-6">
+                        <span class="w-40 text-right text-gray-600 font-medium">Content Quality</span>
+                        <div class="flex-1 h-1.5 progress-bar-bg relative rounded-full overflow-hidden">
+                            <div class="absolute top-0 left-0 h-full bg-red-600 rounded-full" style="width: 45%"></div>
+                        </div>
+                    </div>
+                    <div class="flex items-center gap-6">
+                        <span class="w-40 text-right text-gray-600 font-medium">On-Page SEO</span>
+                        <div class="flex-1 h-1.5 progress-bar-bg relative rounded-full overflow-hidden">
+                            <div class="absolute top-0 left-0 h-full bg-red-600 rounded-full" style="width: 35%"></div>
+                        </div>
+                    </div>
+                    <div class="flex items-center gap-6">
+                        <span class="w-40 text-right text-gray-600 font-medium">Performance</span>
+                        <div class="flex-1 h-1.5 progress-bar-bg relative rounded-full overflow-hidden">
+                            <div class="absolute top-0 left-0 h-full bg-red-600 rounded-full" style="width: 51%"></div>
+                        </div>
+                    </div>
+                    <div class="flex items-center gap-6">
+                        <span class="w-40 text-right text-gray-600 font-medium">Images</span>
+                        <div class="flex-1 h-1.5 progress-bar-bg relative rounded-full overflow-hidden">
+                            <div class="absolute top-0 left-0 h-full bg-yellow-600 rounded-full" style="width: 90%"></div>
+                        </div>
+                    </div>
+                    <div class="flex items-center gap-6">
+                        <span class="w-40 text-right text-gray-600 font-medium">AI Readiness</span>
+                        <div class="flex-1 h-1.5 progress-bar-bg relative rounded-full overflow-hidden">
+                            <div class="absolute top-0 left-0 h-full bg-red-600 rounded-full" style="width: 25%"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 2: Performance & Vitals -->
+        <section class="mb-24">
+            <h2 class="text-xs text-gray-500 tracking-[0.2em] mb-3 uppercase">02 - Performance</h2>
+            <h3 class="font-serif-custom text-4xl mb-12 text-gray-800">Core Web Vitals & Page Weight</h3>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+                <!-- LCP Gauge -->
+                <div class="card-bg p-8 flex flex-col items-center text-center">
+                    <p class="text-xs tracking-[0.1em] text-gray-500 mb-6 uppercase">LCP - Largest Contentful Paint</p>
+                    <div class="w-48 h-28 relative mb-4">
+                        <canvas id="lcpChart"></canvas>
+                        <div class="absolute bottom-0 w-full text-center pb-2">
+                            <span class="text-2xl font-serif-custom text-critical">High</span>
+                        </div>
+                    </div>
+                    <p class="text-critical text-sm font-medium">Likely Poor (>4s)</p>
+                    <p class="text-xs text-gray-500 mt-2">Client rendering + 123 scripts</p>
+                </div>
+
+                <!-- INP Gauge -->
+                <div class="card-bg p-8 flex flex-col items-center text-center">
+                    <p class="text-xs tracking-[0.1em] text-gray-500 mb-6 uppercase">INP - Interaction to Next Paint</p>
+                    <div class="w-48 h-28 relative mb-4">
+                        <canvas id="inpChart"></canvas>
+                        <div class="absolute bottom-0 w-full text-center pb-2">
+                            <span class="text-2xl font-serif-custom text-warning">Med</span>
+                        </div>
+                    </div>
+                    <p class="text-warning text-sm font-medium">Needs Improvement (200-500ms)</p>
+                    <p class="text-xs text-gray-500 mt-2">Heavy main thread contention</p>
+                </div>
+
+                <!-- CLS Gauge -->
+                <div class="card-bg p-8 flex flex-col items-center text-center">
+                    <p class="text-xs tracking-[0.1em] text-gray-500 mb-6 uppercase">CLS - Cumulative Layout Shift</p>
+                    <div class="w-48 h-28 relative mb-4">
+                        <canvas id="clsChart"></canvas>
+                        <div class="absolute bottom-0 w-full text-center pb-2">
+                            <span class="text-2xl font-serif-custom text-good">Good</span>
+                        </div>
+                    </div>
+                    <p class="text-good text-sm font-medium">Pass (< 0.1)</p>
+                    <p class="text-xs text-gray-500 mt-2">Images have explicit dimensions</p>
+                </div>
+            </div>
+
+            <!-- Page Weight Metric Cards -->
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
+                <div class="card-bg p-6 border-t-2 border-red-400">
+                    <p class="text-xs tracking-[0.1em] text-gray-500 mb-3 uppercase">HTML Size</p>
+                    <p class="text-4xl font-serif-custom text-critical mb-2">763 <span class="text-xl">KB</span></p>
+                    <p class="text-xs text-gray-500">Target: < 100 KB (7.6x over)</p>
+                </div>
+                <div class="card-bg p-6 border-t-2 border-red-400">
+                    <p class="text-xs tracking-[0.1em] text-gray-500 mb-3 uppercase">Script Tags</p>
+                    <p class="text-4xl font-serif-custom text-critical mb-2">123</p>
+                    <p class="text-xs text-gray-500">Target: < 40 (3x over)</p>
+                </div>
+                <div class="card-bg p-6 border-t-2 border-red-400">
+                    <p class="text-xs tracking-[0.1em] text-gray-500 mb-3 uppercase">GTM Loads</p>
+                    <p class="text-4xl font-serif-custom text-critical mb-2">13×</p>
+                    <p class="text-xs text-gray-500">Should load exactly once</p>
+                </div>
+                <div class="card-bg p-6 border-t-2 border-green-500">
+                    <p class="text-xs tracking-[0.1em] text-gray-500 mb-3 uppercase">TTFB</p>
+                    <p class="text-4xl font-serif-custom text-good mb-2">71<span class="text-xl">ms</span></p>
+                    <p class="text-xs text-gray-500">Server responds fast</p>
+                </div>
+            </div>
+
+            <!-- NEW: Resource Distribution & Third-Party Impact -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mt-8">
+                <!-- Resource Distribution -->
+                <div class="card-bg p-8">
+                    <p class="text-[10px] tracking-[0.1em] text-gray-500 mb-6 uppercase font-bold">Resource Distribution</p>
+                    <div class="space-y-5 text-sm text-gray-600">
+                        <div class="flex items-center gap-4">
+                            <span class="w-24">Scripts</span>
+                            <div class="flex-1 h-5 bg-gray-200 rounded-sm overflow-hidden"><div class="h-full bg-red-600" style="width: 80%"></div></div>
+                            <span class="w-8 text-right">123</span>
+                        </div>
+                        <div class="flex items-center gap-4">
+                            <span class="w-24">Styles</span>
+                            <div class="flex-1 h-5 bg-gray-200 rounded-sm overflow-hidden"><div class="h-full bg-yellow-600" style="width: 100%"></div></div>
+                            <span class="w-8 text-right">198</span>
+                        </div>
+                        <div class="flex items-center gap-4">
+                            <span class="w-24">Images</span>
+                            <div class="flex-1 h-5 bg-gray-200 rounded-sm overflow-hidden"><div class="h-full bg-yellow-500" style="width: 45%"></div></div>
+                            <span class="w-8 text-right">60</span>
+                        </div>
+                        <div class="flex items-center gap-4">
+                            <span class="w-24">Preconnects</span>
+                            <div class="flex-1 h-5 bg-gray-200 rounded-sm overflow-hidden"><div class="h-full bg-green-500" style="width: 5%"></div></div>
+                            <span class="w-8 text-right">3</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Third-Party Script Impact -->
+                <div class="card-bg p-8">
+                    <p class="text-[10px] tracking-[0.1em] text-gray-500 mb-6 uppercase font-bold">Third-Party Script Impact</p>
+                    <div class="space-y-5 text-sm text-gray-600">
+                        <div class="flex items-center gap-4">
+                            <span class="w-24">GTM (13+)</span>
+                            <div class="flex-1 h-5 bg-gray-200 rounded-sm overflow-hidden"><div class="h-full bg-red-600" style="width: 95%"></div></div>
+                        </div>
+                        <div class="flex items-center gap-4">
+                            <span class="w-24">BSS Labels</span>
+                            <div class="flex-1 h-5 bg-gray-200 rounded-sm overflow-hidden"><div class="h-full bg-yellow-600" style="width: 70%"></div></div>
+                        </div>
+                        <div class="flex items-center gap-4">
+                            <span class="w-24">PageFly</span>
+                            <div class="flex-1 h-5 bg-gray-200 rounded-sm overflow-hidden"><div class="h-full bg-yellow-600" style="width: 65%"></div></div>
+                        </div>
+                        <div class="flex items-center gap-4">
+                            <span class="w-24">ReStock</span>
+                            <div class="flex-1 h-5 bg-gray-200 rounded-sm overflow-hidden"><div class="h-full bg-yellow-600" style="width: 80%"></div></div>
+                        </div>
+                        <div class="flex items-center gap-4">
+                            <span class="w-24">Klaviyo</span>
+                            <div class="flex-1 h-5 bg-gray-200 rounded-sm overflow-hidden"><div class="h-full bg-yellow-500" style="width: 40%"></div></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 3: Sitemap Check -->
+        <section class="mb-24">
+            <h2 class="text-xs text-gray-500 tracking-[0.2em] mb-3 uppercase">06 - Sitemap & Indexation</h2>
+            <h3 class="font-serif-custom text-4xl mb-8 text-gray-800">738 URLs Across 8 Sitemaps</h3>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+                <!-- URL Distribution By Type -->
+                <div class="card-bg p-8 flex flex-col md:flex-row items-center gap-8">
+                    <div class="w-full md:w-1/2 relative flex justify-center">
+                        <p class="text-[10px] tracking-[0.1em] text-gray-500 mb-2 uppercase font-bold absolute top-0 left-0">URL Distribution By Type</p>
+                        <div class="w-40 h-40 relative mt-6">
+                            <canvas id="urlDistChart"></canvas>
+                            <div class="absolute inset-0 flex flex-col items-center justify-center font-serif-custom">
+                                <span class="text-3xl text-gray-800">738</span>
+                                <span class="text-[10px] tracking-widest text-gray-400 mt-1">URLS</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="w-full md:w-1/2 flex flex-col gap-3 text-xs text-gray-600 font-medium">
+                        <div class="flex justify-between items-center"><span class="flex items-center gap-2"><span class="w-3 h-3 rounded-full bg-orange-500"></span>Collections</span><span>143</span></div>
+                        <div class="flex justify-between items-center"><span class="flex items-center gap-2"><span class="w-3 h-3 rounded-full bg-gray-700"></span>Products</span><span>108</span></div>
+                        <div class="flex justify-between items-center"><span class="flex items-center gap-2"><span class="w-3 h-3 rounded-full bg-blue-600"></span>Blog Posts</span><span>76</span></div>
+                        <div class="flex justify-between items-center"><span class="flex items-center gap-2"><span class="w-3 h-3 rounded-full bg-green-500"></span>Pages</span><span>41</span></div>
+                        <div class="flex justify-between items-center"><span class="flex items-center gap-2"><span class="w-3 h-3 rounded-full bg-blue-300"></span>en-de Locale (dupes)</span><span>369</span></div>
+                    </div>
+                </div>
+
+                <!-- Collection Health -->
+                <div class="card-bg p-8 flex flex-col md:flex-row items-center gap-8">
+                    <div class="w-full md:w-1/2 relative flex justify-center">
+                        <p class="text-[10px] tracking-[0.1em] text-gray-500 mb-2 uppercase font-bold absolute top-0 left-0">Collection Health (143 Total)</p>
+                        <div class="w-40 h-40 relative mt-6">
+                            <canvas id="collectionHealthChart"></canvas>
+                            <div class="absolute inset-0 flex flex-col items-center justify-center font-serif-custom">
+                                <span class="text-3xl text-red-600">42%</span>
+                                <span class="text-[10px] tracking-widest text-red-400 mt-1">JUNK</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="w-full md:w-1/2 flex flex-col gap-3 text-xs text-gray-600 font-medium">
+                        <div class="flex items-center gap-2"><span class="w-3 h-3 rounded-full bg-green-500"></span>Legitimate</div>
+                        <div class="flex items-center gap-2"><span class="w-3 h-3 rounded-full bg-red-600"></span>Layout fragment</div>
+                        <div class="flex items-center gap-2"><span class="w-3 h-3 rounded-full bg-red-600"></span>Expired promo</div>
+                        <div class="flex items-center gap-2"><span class="w-3 h-3 rounded-full bg-red-600"></span>Test/duplicate</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card-bg overflow-hidden">
+                <table class="w-full text-left text-sm">
+                    <thead>
+                        <tr class="text-xs tracking-widest text-gray-500 uppercase border-b border-gray-200">
+                            <th class="px-6 py-4 font-normal">Sitemap Check</th>
+                            <th class="px-6 py-4 font-normal">Result</th>
+                            <th class="px-6 py-4 font-normal">Detail</th>
+                        </tr>
+                    </thead>
+                    <tbody class="divide-y divide-gray-200">
+                        <tr>
+                            <td class="px-6 py-5 text-gray-700">robots.txt reference</td>
+                            <td class="px-6 py-5"><span class="inline-flex items-center gap-1.5 text-xs font-semibold text-green-700 bg-green-100 px-2 py-1 rounded-full uppercase"><span class="w-1.5 h-1.5 rounded-full bg-green-600"></span>Pass</span></td>
+                            <td class="px-6 py-5 text-gray-500">Sitemap declared in robots.txt</td>
+                        </tr>
+                        <tr>
+                            <td class="px-6 py-5 text-gray-700">XML validity</td>
+                            <td class="px-6 py-5"><span class="inline-flex items-center gap-1.5 text-xs font-semibold text-green-700 bg-green-100 px-2 py-1 rounded-full uppercase"><span class="w-1.5 h-1.5 rounded-full bg-green-600"></span>Pass</span></td>
+                            <td class="px-6 py-5 text-gray-500">All 8 child sitemaps valid and return 200</td>
+                        </tr>
+                        <tr>
+                            <td class="px-6 py-5 text-gray-700">URL limit</td>
+                            <td class="px-6 py-5"><span class="inline-flex items-center gap-1.5 text-xs font-semibold text-green-700 bg-green-100 px-2 py-1 rounded-full uppercase"><span class="w-1.5 h-1.5 rounded-full bg-green-600"></span>Pass</span></td>
+                            <td class="px-6 py-5 text-gray-500">738 URLs, well under 50,000 limit</td>
+                        </tr>
+                        <tr>
+                            <td class="px-6 py-5 text-gray-700">lastmod accuracy</td>
+                            <td class="px-6 py-5"><span class="inline-flex items-center gap-1.5 text-xs font-semibold text-red-700 bg-red-100 px-2 py-1 rounded-full uppercase"><span class="w-1.5 h-1.5 rounded-full bg-red-600"></span>Fail</span></td>
+                            <td class="px-6 py-5 text-gray-500">108 products share identical lastmod timestamp</td>
+                        </tr>
+                        <tr>
+                            <td class="px-6 py-5 text-gray-700">Low-value pages</td>
+                            <td class="px-6 py-5"><span class="inline-flex items-center gap-1.5 text-xs font-semibold text-red-700 bg-red-100 px-2 py-1 rounded-full uppercase"><span class="w-1.5 h-1.5 rounded-full bg-red-600"></span>Fail</span></td>
+                            <td class="px-6 py-5 text-gray-500">12 utility pages should be noindexed</td>
+                        </tr>
+                        <tr>
+                            <td class="px-6 py-5 text-gray-700">Collection hygiene</td>
+                            <td class="px-6 py-5"><span class="inline-flex items-center gap-1.5 text-xs font-semibold text-red-700 bg-red-100 px-2 py-1 rounded-full uppercase"><span class="w-1.5 h-1.5 rounded-full bg-red-600"></span>Fail</span></td>
+                            <td class="px-6 py-5 text-gray-500">~60 junk collections out of 143</td>
+                        </tr>
+                        <tr>
+                            <td class="px-6 py-5 text-gray-700">Hreflang in sitemap</td>
+                            <td class="px-6 py-5"><span class="inline-flex items-center gap-1.5 text-xs font-semibold text-red-700 bg-red-100 px-2 py-1 rounded-full uppercase"><span class="w-1.5 h-1.5 rounded-full bg-red-600"></span>Fail</span></td>
+                            <td class="px-6 py-5 text-gray-500">No hreflang annotations for en-de locale</td>
+                        </tr>
+                        <tr>
+                            <td class="px-6 py-5 text-gray-700">Image coverage</td>
+                            <td class="px-6 py-5"><span class="inline-flex items-center gap-1.5 text-xs font-semibold text-green-700 bg-green-100 px-2 py-1 rounded-full uppercase"><span class="w-1.5 h-1.5 rounded-full bg-green-600"></span>Pass</span></td>
+                            <td class="px-6 py-5 text-gray-500">107/108 products have image tags</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <!-- Section 4: Schema Markup Status -->
+        <section class="mb-24">
+            <h2 class="text-xs text-gray-500 tracking-[0.2em] mb-3 uppercase">04 - Structured Data</h2>
+            <h3 class="font-serif-custom text-4xl mb-8 text-gray-800">Schema Markup Status</h3>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <!-- Organization Schema -->
+                <div class="card-bg p-6 border-t-2 border-red-400">
+                    <div class="flex justify-between items-start mb-4">
+                        <h4 class="font-bold text-lg text-gray-800">Organization</h4>
+                        <span class="text-[10px] bg-red-100 text-red-700 px-2 py-1 rounded font-bold uppercase tracking-wider">Needs Fix</span>
+                    </div>
+                    <p class="text-sm text-gray-600">Present - has errors. Empty sameAs, http context instead of https.</p>
+                </div>
+
+                <!-- Product Schema -->
+                <div class="card-bg p-6 border-t-2 border-yellow-400">
+                    <div class="flex justify-between items-start mb-4">
+                        <h4 class="font-bold text-lg text-gray-800">Product + Offer</h4>
+                        <span class="text-[10px] bg-yellow-100 text-yellow-700 px-2 py-1 rounded font-bold uppercase tracking-wider">Warning</span>
+                    </div>
+                    <p class="text-sm text-gray-600">Mostly robust — missing brand, no reviews/aggregateRating fields.</p>
+                </div>
+
+                <!-- Breadcrumb Schema -->
+                <div class="card-bg p-6 border-t-2 border-green-500">
+                    <div class="flex justify-between items-start mb-4">
+                        <h4 class="font-bold text-lg text-gray-800">BreadcrumbList</h4>
+                        <span class="text-[10px] bg-green-100 text-green-700 px-2 py-1 rounded font-bold uppercase tracking-wider">Valid</span>
+                    </div>
+                    <p class="text-sm text-gray-600">Present and correctly maps collection hierarchy to products.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 5: Issues List -->
+        <section class="mb-10">
+            <h2 class="text-xs text-gray-500 tracking-[0.2em] mb-3 uppercase">05 - Action Plan</h2>
+            <h3 class="font-serif-custom text-4xl mb-10 text-gray-800">What Needs Fixing</h3>
+
+            <div class="space-y-4">
+                <!-- Issue 1 -->
+                <div class="card-bg p-6 md:p-8 flex gap-6 md:gap-8 transition-transform hover:-translate-y-1 duration-300">
+                    <div class="font-serif-custom text-4xl text-gray-300 italic shrink-0">#1</div>
+                    <div>
+                        <div class="flex flex-wrap items-center gap-3 mb-2">
+                            <span class="text-[10px] bg-red-100 text-red-700 px-2 py-1 rounded font-bold uppercase tracking-wider">Critical</span>
+                            <h4 class="font-bold text-gray-800 text-lg">No homepage meta description or title keywords</h4>
+                        </div>
+                        <p class="text-gray-600 text-sm leading-relaxed mt-2">Title tag is just the brand name — no keywords. Meta description is completely missing. Google auto-generates snippets, meaning search engines have zero context about what you sell.</p>
+                    </div>
+                </div>
+
+                <!-- Issue 2 -->
+                <div class="card-bg p-6 md:p-8 flex gap-6 md:gap-8 transition-transform hover:-translate-y-1 duration-300">
+                    <div class="font-serif-custom text-4xl text-gray-300 italic shrink-0">#2</div>
+                    <div>
+                        <div class="flex flex-wrap items-center gap-3 mb-2">
+                            <span class="text-[10px] bg-red-100 text-red-700 px-2 py-1 rounded font-bold uppercase tracking-wider">Critical</span>
+                            <h4 class="font-bold text-gray-800 text-lg">Product descriptions critically thin (60-100 words)</h4>
+                        </div>
+                        <p class="text-gray-600 text-sm leading-relaxed mt-2">Product pages average 60-100 words vs. 300+ minimum. For an e-commerce store where customers can't touch products, detailed descriptions covering materials and specs are essential for both SEO and conversions.</p>
+                    </div>
+                </div>
+
+                <!-- Issue 3 -->
+                <div class="card-bg p-6 md:p-8 flex gap-6 md:gap-8 transition-transform hover:-translate-y-1 duration-300">
+                    <div class="font-serif-custom text-4xl text-gray-300 italic shrink-0">#3</div>
+                    <div>
+                        <div class="flex flex-wrap items-center gap-3 mb-2">
+                            <span class="text-[10px] bg-red-100 text-red-700 px-2 py-1 rounded font-bold uppercase tracking-wider">Critical</span>
+                            <h4 class="font-bold text-gray-800 text-lg">GTM loaded 13 times on homepage</h4>
+                        </div>
+                        <p class="text-gray-600 text-sm leading-relaxed mt-2">Each section builder injects its own GTM script copy. Massive wasted bandwidth and CPU on every pageview. Should load exactly once in the head.</p>
+                    </div>
+                </div>
+
+                 <!-- Issue 4 -->
+                 <div class="card-bg p-6 md:p-8 flex gap-6 md:gap-8 transition-transform hover:-translate-y-1 duration-300">
+                    <div class="font-serif-custom text-4xl text-gray-300 italic shrink-0">#4</div>
+                    <div>
+                        <div class="flex flex-wrap items-center gap-3 mb-2">
+                            <span class="text-[10px] bg-red-100 text-red-700 px-2 py-1 rounded font-bold uppercase tracking-wider">Critical</span>
+                            <h4 class="font-bold text-gray-800 text-lg">763 KB HTML with 123 script tags</h4>
+                        </div>
+                        <p class="text-gray-600 text-sm leading-relaxed mt-2">Homepage HTML is 7.6x the target size. Third-party apps inject massive inline JSON config. Combined with 123 scripts, this severely impacts LCP and INP metrics.</p>
+                    </div>
+                </div>
+
+                <!-- Issue 5 -->
+                <div class="card-bg p-6 md:p-8 flex gap-6 md:gap-8 transition-transform hover:-translate-y-1 duration-300">
+                    <div class="font-serif-custom text-4xl text-gray-300 italic shrink-0">#5</div>
+                    <div>
+                        <div class="flex flex-wrap items-center gap-3 mb-2">
+                            <span class="text-[10px] bg-red-100 text-red-700 px-2 py-1 rounded font-bold uppercase tracking-wider">Critical</span>
+                            <h4 class="font-bold text-gray-800 text-lg">Care Guide page returns 404</h4>
+                        </div>
+                        <p class="text-gray-600 text-sm leading-relaxed mt-2">Linked in main navigation and footer. A broken expertise page on a brand's site signals neglect to both users and search engines. This should be a comprehensive guide.</p>
+                    </div>
+                </div>
+
+                <!-- Issue 6 -->
+                <div class="card-bg p-6 md:p-8 flex gap-6 md:gap-8 transition-transform hover:-translate-y-1 duration-300">
+                    <div class="font-serif-custom text-4xl text-gray-300 italic shrink-0">#6</div>
+                    <div>
+                        <div class="flex flex-wrap items-center gap-3 mb-2">
+                            <span class="text-[10px] bg-red-100 text-red-700 px-2 py-1 rounded font-bold uppercase tracking-wider">Critical</span>
+                            <h4 class="font-bold text-gray-800 text-lg">~60 junk collections indexed (out of 143)</h4>
+                        </div>
+                        <p class="text-gray-600 text-sm leading-relaxed mt-2">Internal layout fragments, test pages, and expired promos are all in the sitemap. Nearly half of all collections are diluting crawl budget and creating thin content signals.</p>
+                    </div>
+                </div>
+
+                <!-- Issue 7 -->
+                <div class="card-bg p-6 md:p-8 flex gap-6 md:gap-8 transition-transform hover:-translate-y-1 duration-300">
+                    <div class="font-serif-custom text-4xl text-gray-300 italic shrink-0">#7</div>
+                    <div>
+                        <div class="flex flex-wrap items-center gap-3 mb-2">
+                            <span class="text-[10px] bg-red-100 text-red-700 px-2 py-1 rounded font-bold uppercase tracking-wider">Critical</span>
+                            <h4 class="font-bold text-gray-800 text-lg">Zero product reviews on-site</h4>
+                        </div>
+                        <p class="text-gray-600 text-sm leading-relaxed mt-2">Missing aggregateRating in schema means no star ratings in Google SERPs. Static homepage testimonials don't compensate for missing product-level social proof.</p>
+                    </div>
+                </div>
+
+                <!-- Issue 8 -->
+                <div class="card-bg p-6 md:p-8 flex gap-6 md:gap-8 transition-transform hover:-translate-y-1 duration-300">
+                    <div class="font-serif-custom text-4xl text-gray-300 italic shrink-0">#8</div>
+                    <div>
+                        <div class="flex flex-wrap items-center gap-3 mb-2">
+                            <span class="text-[10px] bg-red-100 text-red-700 px-2 py-1 rounded font-bold uppercase tracking-wider">Critical</span>
+                            <h4 class="font-bold text-gray-800 text-lg">Schema markup has multiple errors</h4>
+                        </div>
+                        <p class="text-gray-600 text-sm leading-relaxed mt-2">@context uses http:// instead of https://. Organization sameAs contains empty strings. Invalid schema prevents rich snippets from appearing in search results.</p>
+                    </div>
+                </div>
+
+                <!-- Issue 9 -->
+                <div class="card-bg p-6 md:p-8 flex gap-6 md:gap-8 transition-transform hover:-translate-y-1 duration-300">
+                    <div class="font-serif-custom text-4xl text-gray-300 italic shrink-0">#9</div>
+                    <div>
+                        <div class="flex flex-wrap items-center gap-3 mb-2">
+                            <span class="text-[10px] bg-orange-100 text-orange-700 px-2 py-1 rounded font-bold uppercase tracking-wider">High</span>
+                            <h4 class="font-bold text-gray-800 text-lg">FAQ contradicts homepage messaging</h4>
+                        </div>
+                        <p class="text-gray-600 text-sm leading-relaxed mt-2">FAQ says products include "alloy metal mix costume jewelry" while homepage says "all of our jewelry is made with REAL materials." This directly undermines brand trust and negatively impacts product quality signals for search engines.</p>
+                    </div>
+                </div>
+
+                <!-- Issue 10 -->
+                <div class="card-bg p-6 md:p-8 flex gap-6 md:gap-8 transition-transform hover:-translate-y-1 duration-300">
+                    <div class="font-serif-custom text-4xl text-gray-300 italic shrink-0">#10</div>
+                    <div>
+                        <div class="flex flex-wrap items-center gap-3 mb-2">
+                            <span class="text-[10px] bg-orange-100 text-orange-700 px-2 py-1 rounded font-bold uppercase tracking-wider">High</span>
+                            <h4 class="font-bold text-gray-800 text-lg">12 utility pages indexed that shouldn't be</h4>
+                        </div>
+                        <p class="text-gray-600 text-sm leading-relaxed mt-2">Email capture pages, waitlist pages, thank-you pages, and expired campaign pages are all in the sitemap. Users can land on these from Google with zero context, which wastes crawl budget and creates a poor user experience.</p>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+    </div>
+
+    <!-- Chart.js Configurations -->
+    <script>
+        // Global Chart Defaults
+        Chart.defaults.plugins.legend.display = false;
+        Chart.defaults.plugins.tooltip.enabled = false;
+        Chart.defaults.cutout = '85%'; // Thin rings
+
+        // Color Palette
+        const colors = {
+            red: '#d9534f',
+            orange: '#f0ad4e',
+            green: '#5cb85c',
+            blue: '#428bca',
+            grey: '#e5e7eb'
+        };
+
+        // 1. Overall Health Doughnut
+        const ctxHealth = document.getElementById('mainHealthChart').getContext('2d');
+        new Chart(ctxHealth, {
+            type: 'doughnut',
+            data: {
+                labels: ['Score', 'Remaining'],
+                datasets: [{
+                    data: [51, 49], 
+                    backgroundColor: [colors.red, colors.blue],
+                    borderWidth: 0,
+                    borderRadius: [10, 10]
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                cutout: '90%', 
+                rotation: -90, 
+            }
+        });
+
+        // Common config for half-doughnut gauges
+        const gaugeOptions = {
+            responsive: true,
+            maintainAspectRatio: false,
+            circumference: 180, 
+            rotation: 270, 
+            cutout: '80%',
+        };
+
+        // 2. LCP Gauge
+        const ctxLcp = document.getElementById('lcpChart').getContext('2d');
+        new Chart(ctxLcp, {
+            type: 'doughnut',
+            data: {
+                datasets: [{
+                    data: [85, 15], 
+                    backgroundColor: [colors.red, colors.grey],
+                    borderWidth: 0,
+                    borderRadius: 20
+                }]
+            },
+            options: gaugeOptions
+        });
+
+        // 3. INP Gauge
+        const ctxInp = document.getElementById('inpChart').getContext('2d');
+        new Chart(ctxInp, {
+            type: 'doughnut',
+            data: {
+                datasets: [{
+                    data: [60, 40], 
+                    backgroundColor: [colors.orange, colors.grey],
+                    borderWidth: 0,
+                    borderRadius: 20
+                }]
+            },
+            options: gaugeOptions
+        });
+
+        // 4. CLS Gauge
+        const ctxCls = document.getElementById('clsChart').getContext('2d');
+        new Chart(ctxCls, {
+            type: 'doughnut',
+            data: {
+                datasets: [{
+                    data: [10, 90], 
+                    backgroundColor: [colors.green, colors.grey],
+                    borderWidth: 0,
+                    borderRadius: 20
+                }]
+            },
+            options: gaugeOptions
+        });
+
+        // 5. URL Distribution Chart
+        const ctxUrlDist = document.getElementById('urlDistChart').getContext('2d');
+        new Chart(ctxUrlDist, {
+            type: 'doughnut',
+            data: {
+                labels: ['Collections', 'Products', 'Blog Posts', 'Pages', 'en-de Locale'],
+                datasets: [{
+                    data: [143, 108, 76, 41, 369], 
+                    backgroundColor: ['#f97316', '#374151', '#2563eb', '#22c55e', '#93c5fd'],
+                    borderWidth: 0,
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                cutout: '80%', 
+            }
+        });
+
+        // 6. Collection Health Chart
+        const ctxColHealth = document.getElementById('collectionHealthChart').getContext('2d');
+        new Chart(ctxColHealth, {
+            type: 'doughnut',
+            data: {
+                labels: ['Legitimate', 'Junk'],
+                datasets: [{
+                    data: [83, 60], // ~42% is Junk
+                    backgroundColor: ['#22c55e', '#dc2626'],
+                    borderWidth: 0,
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                cutout: '80%', 
+            }
+        });
+    </script>
+</body>
+</html>
